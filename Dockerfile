@@ -7,11 +7,12 @@ RUN dnf install -y python3-paramiko python3-ply python3-xlwt ; \
 
 # UDES Odoo snapshot
 #
-ADD https://codeload.github.com/unipartdigital/odoo/zip/${ODOO_VERSION} \
+ADD https://codeload.github.com/unipartdigital/odoo/zip/udes-${ODOO_VERSION} \
     /opt/odoo.zip
-RUN rm -rf /opt/odoo /opt/odoo-${ODOO_VERSION} ; \
+RUN rm -rf /opt/odoo /opt/odoo-${ODOO_VERSION} \
+	   /opt/odoo-udes-${ODOO_VERSION} ; \
     unzip -q -d /opt /opt/odoo.zip ; \
-    ln -s odoo-${ODOO_VERSION} /opt/odoo
+    ln -s odoo-udes-${ODOO_VERSION} /opt/odoo
 
 # Prerequisite module installation (without tests)
 #
