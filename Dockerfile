@@ -14,7 +14,7 @@ RUN dnf install -y fedora-workstation-repositories dnf-plugins-core ; \
 # Non-distro packages
 #
 USER odoo
-RUN pip3 install --user odoorpc
+RUN pip3 install --user odoorpc "pyyaml<5.1"
 
 # UDES Odoo snapshot
 #
