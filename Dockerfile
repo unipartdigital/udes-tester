@@ -18,7 +18,7 @@ RUN pip3 install --user unittest-xml-reporting
 ## Download a compatible version of chromedriver
 ## TODO (ssb): this is temporary, remove this block and use dnf when the distro version is up to date.
 USER root
-ADD https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip /bin/chromedriver.zip
+ADD https://chromedriver.storage.googleapis.com/76.0.3809.68/chromedriver_linux64.zip /bin/chromedriver.zip
 RUN unzip -d /bin /bin/chromedriver.zip
 RUN chmod a+x /bin/chromedriver
 
