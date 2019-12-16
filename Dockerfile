@@ -5,7 +5,7 @@ FROM unipartdigital/odoo-tester
 RUN dnf install -y fedora-workstation-repositories dnf-plugins-core ; \
     dnf config-manager --set-enabled google-chrome ; \
     dnf install -y python3-paramiko python3-ply \
-                   google-chrome-stable pipenv \
+                   chromium-browser-78.0.3904.108-0ubuntu0.19.04.1 pipenv \
                    xorg-x11-server-Xvfb cups-pdf xorg-x11-fonts-Type1 \
                    xorg-x11-fonts-75dpi python3-shortuuid python3-pyicu ; \
     dnf clean all
