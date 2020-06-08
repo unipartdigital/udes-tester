@@ -33,6 +33,11 @@ RUN rm -rf /opt/odoo /opt/odoo-${ODOO_VERSION} \
     unzip -q -d /opt /opt/odoo.zip ; \
     ln -s odoo-udes-${ODOO_VERSION} /opt/odoo
 
+
+USER postgres
+RUN pg_ctl start; psql --dbname odoo -c "CREATE EXTENSION pg_trgm;"; pg_ctl stop;
+USER root
+
 # Prerequisite module installation (without tests)
 #
 RUN odoo-wrapper --without-demo=all -i \
