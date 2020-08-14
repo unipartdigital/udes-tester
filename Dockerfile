@@ -17,11 +17,14 @@ USER odoo
 RUN pip3 install --user unittest-xml-reporting
 
 ## Download a compatible version of chromedriver
-## TODO (ssb): this is temporary, remove this block and use dnf when the distro version is up to date.
+#
 USER root
-ADD https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip /bin/chromedriver.zip
-RUN unzip -d /bin /bin/chromedriver.zip
-RUN chmod a+x /bin/chromedriver
+RUN export CHROME_VER=$(echo $(google-chrome --version) | grep -oE '([[:digit:]]+\.)+' | sed 's/.$//') \
+    && export CHROMEDRIVER_VER=$(curl --location --fail --retry 3 https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VER) \
+    && curl --silent --show-error --location --fail --retry 3 --output /bin/chromedriver_linux64.zip "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VER/chromedriver_linux64.zip" \
+    && unzip -d /bin /bin/chromedriver_linux64.zip \
+    && chmod a+x /bin/chromedriver
+
 
 # UDES Odoo snapshot
 #
