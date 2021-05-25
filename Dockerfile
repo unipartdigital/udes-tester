@@ -16,6 +16,7 @@ RUN dnf install -y fedora-workstation-repositories dnf-plugins-core ; \
 USER odoo
 RUN pip3 install --user unittest-xml-reporting
 RUN pip3 install --user ortools
+RUN pip3 install --user mock
 
 ## Download a compatible version of chromedriver
 #
