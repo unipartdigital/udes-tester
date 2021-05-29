@@ -17,6 +17,7 @@ USER odoo
 RUN pip3 install --user unittest-xml-reporting
 RUN pip3 install --user ortools
 RUN pip3 install --user mock
+RUN pip3 install --user python-barcode
 
 ## Download a compatible version of chromedriver
 #
