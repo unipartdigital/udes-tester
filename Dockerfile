@@ -11,13 +11,7 @@ RUN dnf install -y fedora-workstation-repositories dnf-plugins-core ; \
 		   postgresql-contrib python3-paho-mqtt; \
     dnf clean all
 
-# Non-distro packages
-#
-USER odoo
-RUN pip3 install --user unittest-xml-reporting
-RUN pip3 install --user ortools
-RUN pip3 install --user mock
-RUN pip3 install --user python-barcode
+# Non-distro packages should be installed downstream to minimise image rebuilds.
 
 ## Download a compatible version of chromedriver
 #
