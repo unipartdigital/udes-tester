@@ -1,4 +1,4 @@
-FROM unipartdigital/odoo-tester:13.0
+FROM unipartdigital/odoo-tester:14.0
 
 # Distro packages
 #

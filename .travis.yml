@@ -1,7 +1,7 @@
 sudo: required
 
 env:
-  - UDES_VERSION=13.0
+  - UDES_VERSION=14.0
 
 services:
   - docker
