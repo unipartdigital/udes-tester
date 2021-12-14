@@ -44,4 +44,4 @@ USER root
 # Prerequisite module installation (without tests)
 #
 RUN odoo-wrapper --without-demo=all -i \
-    project,document,product,stock,stock_picking_batch,purchase,mrp
+    project,document,product,stock,stock_picking_batch
