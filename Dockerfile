@@ -8,7 +8,8 @@ RUN dnf install -y fedora-workstation-repositories dnf-plugins-core ; \
                    google-chrome-stable pipenv \
                    xorg-x11-server-Xvfb cups-pdf xorg-x11-fonts-Type1 \
                    xorg-x11-fonts-75dpi python3-shortuuid \
-		   postgresql-contrib python3-paho-mqtt python3-ldap; \
+		   postgresql-contrib python3-paho-mqtt python3-ldap \
+		   python3-cairo python3-qrcode; \
     dnf clean all
 
 # Non-distro packages should be installed downstream to minimise image rebuilds.
