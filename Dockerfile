@@ -18,11 +18,15 @@ RUN dnf install -y fedora-workstation-repositories dnf-plugins-core ; \
 #
 USER root
 RUN export CHROME_VER=$(echo $(google-chrome --version) | grep -oE '([[:digit:]]+\.)+' | sed 's/.$//') \
-    && export CHROMEDRIVER_VER=$(curl --location --fail --retry 3 https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VER) \
-    && curl --silent --show-error --location --fail --retry 3 --output /bin/chromedriver_linux64.zip "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VER/chromedriver_linux64.zip" \
+    && echo $"Chrome Version: $CHROME_VER" && export CHROME_DRIVER_URL=$"https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_$CHROME_VER" \
+    && echo $"Chrome URL: $CHROME_DRIVER_URL" \
+    && export CHROMEDRIVER_VER=$(curl --show-error --location --fail --retry 3 $CHROME_DRIVER_URL) \
+    && echo $"Chrome Driver Version: $CHROMEDRIVER_VER" \
+    && curl --silent --show-error --location --fail --retry 3 --output /bin/chromedriver_linux64.zip "https://storage.googleapis.com/chrome-for-testing-public/$CHROMEDRIVER_VER/linux64/chromedriver-linux64.zip" \
     && unzip -d /bin /bin/chromedriver_linux64.zip \
-    && chmod a+x /bin/chromedriver
-
+    && chmod a+x /bin/chromedriver-linux64 \
+    && mv /bin/chromedriver-linux64/chromedriver /bin/chromedriver \
+    && chmod a+x /bin/chromedriver 
 
 # UDES Odoo snapshot
 #
